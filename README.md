@@ -8,6 +8,7 @@
 - Ollama — https://ollama.com
 - PyTorch — https://pytorch.org
 - Heretic — https://github.com/p-e-w/heretic
+
 Я опишу процесс на примере Qwen 3 8B, используя платформу Ollama.com и ОС Windows.
 
 1. Установка Ollama и нашей модели
