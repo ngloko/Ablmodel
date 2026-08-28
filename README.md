@@ -46,13 +46,13 @@
 
 Далее нужно всё-таки запустить то, что мы скачали:
   
-  heretic Qwen/Qwen3-4B-Instruct-2507
+          heretic Qwen/Qwen3-4B-Instruct-2507
 
 После команды выше нужно будет долго ждать, так что может показаться, что всё зависло, потому что в таком режиме Heretic не выводит происходящее.
 
 По умолчанию Heretic использует по 400 «хороших» и 400 «плохих» промптов, но это очень долго при не самом хорошем железе. Так что мы воспользуемся инструментарием Heretic, уменьшим количество запросов, попросим выводить результат и отключим графики, чтобы было быстрее:
   
-  heretic Qwen/Qwen3-4B-Instruct-2507 --good-prompts.split "train[:50]" --bad-prompts.split "train[:50]" --print-responses --no-plot-residuals
+        heretic Qwen/Qwen3-4B-Instruct-2507 --good-prompts.split "train[:50]" --bad-prompts.split "train[:50]" --print-responses --no-plot-residuals
 
 Это уменьшит количество примеров до 50, покажет ответы и отключит генерацию графиков.
 Здесь будет снова установка модели с Hugging Face, однако мы можем указать путь до модели, которую установили раньше, и не нужно будет ждать ещё раз.
@@ -62,23 +62,23 @@
 Пример:
 ПРИМЕР. НЕ КОНЕЧНЫЙ ВЫВОД ПРОГРАММЫ И НЕ ПОДХОДИТ ДЛЯ ИСПОЛЬЗОВАНИЯ
 
-Running trial 25 of 200...
-* Parameters:
- * direction_index = per layer
- * attn.o_proj.max_weight = 1.23
- * attn.o_proj.max_weight_position = 24.94
- * attn.o_proj.min_weight = 0.28
- * attn.o_proj.min_weight_distance = 12.39
- * mlp.down_proj.max_weight = 0.80
- * mlp.down_proj.max_weight_position = 29.17
- * mlp.down_proj.min_weight = 0.15
- * mlp.down_proj.min_weight_distance = 12.26
-* Resetting model...
-* Abliterating...
-* Evaluating...
- * Obtaining first-token probability distributions...
- * KL divergence: 0.0317
-* Counting model refusals...
+        Running trial 25 of 200...
+        * Parameters:
+         * direction_index = per layer
+         * attn.o_proj.max_weight = 1.23
+         * attn.o_proj.max_weight_position = 24.94
+         * attn.o_proj.min_weight = 0.28
+         * attn.o_proj.min_weight_distance = 12.39
+         * mlp.down_proj.max_weight = 0.80
+         * mlp.down_proj.max_weight_position = 29.17
+         * mlp.down_proj.min_weight = 0.15
+         * mlp.down_proj.min_weight_distance = 12.26
+        * Resetting model...
+        * Abliterating...
+        * Evaluating...
+         * Obtaining first-token probability distributions...
+         * KL divergence: 0.0317
+        * Counting model refusals...
 
 5. Сохранение модели
 В итоге Heretic создаст новую версию вашей модели с изменёнными весами. В зависимости от того, как вы настроили экспорт (или если не настраивали — вас спросят), вы получите один из двух вариантов:
@@ -89,16 +89,16 @@ Running trial 25 of 200...
 
 После сохранения модели скопируйте путь к ней и создайте файл Modelfile со строкой:
   
-  FROM [путь к модели]
+          FROM [путь к модели]
 
 И сохраните его.
 После этого снова заходим в PowerShell и пишем команду:
 
-  ollama create [Название модели] -f ./Modelfile
+          ollama create [Название модели] -f ./Modelfile
 
 Это создаст модель, которую нужно запустить:
 
-  ollama run [Название модели]
+          ollama run [Название модели]
 
 Ваша модель будет запущена в командной строке в Ollama.
 
